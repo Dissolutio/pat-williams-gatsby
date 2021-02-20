@@ -1,89 +1,35 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react';
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
-
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
-
+export default function HomePage() {
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
-
-          return (
-            <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
-          )
-        })}
-      </ol>
-    </Layout>
-  )
+    <main>
+      <h1>Pat Williams!</h1>
+      <Para />
+      <h1 id="shows">Shows</h1>
+      <Para />
+      <h1 id="releases">Releases</h1>
+      <Para />
+      <form id="contact">
+        <label>
+          Contact me:
+          <input type="text" placeholder="Can't use it, don't care" disabled />
+        </label>
+      </form>
+    </main>
+  );
 }
 
-export default BlogIndex
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-        }
-      }
-    }
-  }
-`
+const Para = () => {
+  return (
+    <p>
+      Of your chamber no as said napping i my my straight. Fowl of least not the
+      on wheeled, with will than by sad. Quoth sorrow it this living with.
+      Nights be here ember is. Sent whether a wished fancy bird fancy. Rustling
+      so door within core i remember ebony, for quaff but my god the felt i
+      bird. The of enchanted this his from heaven till terrors quoth. Forget
+      respiterespite still whom swung violet saintly. Sinking whose bust sainted
+      more, not burden wrought or nameless he by or the whom. The on was
+      plutonian the bird the. My door tufted.
+    </p>
+  );
+};
