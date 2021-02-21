@@ -7,10 +7,6 @@ export default {
     title: `Pat Williams Music`,
     siteUrl: `https://patwilliamsmusic.netlify.app/`,
     description: `Listen to music by singer/song-writer Patrick Williams. Learn about the artist, his work, his upcoming performances.`,
-    // social: {
-    //   instagram: `https://www.instagram.com/patwilliamstx/`,
-    //   youtube: `https://www.youtube.com/channel/UCYqVNOVGG92krQ6tzDN558Q`,
-    // },
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -20,6 +16,13 @@ export default {
       options: {
         name: `images`,
         path: `${__dirname}/src/data/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `audio`,
+        path: `${__dirname}/src/data/audio`,
       },
     },
     {

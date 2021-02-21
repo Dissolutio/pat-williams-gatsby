@@ -1,11 +1,15 @@
-import React from "react"
-import styled from "styled-components"
-import { Link } from "gatsby"
-import AnchorLink from "react-anchor-link-smooth-scroll"
-import { Logo } from "./Logo"
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { Logo } from './Logo';
 
-export function Nav() {
-  const isBasePath = (window?.location?.pathname ?? "") === "/"
+export function Nav({ navIds }) {
+  let isBasePath = true;
+  // use inside of an effect so gatsby ssr doesn't freak out about 'window'
+  React.useEffect(() => {
+    isBasePath = (window?.location?.pathname ?? '') === '/';
+  }, []);
   return (
     <StyledHeader role="banner">
       <StyledContainer>
@@ -19,13 +23,13 @@ export function Nav() {
           </Link>
         )}
         <nav>
-          <AnchorLink href="#shows">Shows</AnchorLink>
-          <AnchorLink href="#releases">Releases</AnchorLink>
-          <AnchorLink href="#contact">Contact</AnchorLink>
+          {navIds.map((navId) => (
+            <StyledAnchorLink href={`#${navId}`}>{navId}</StyledAnchorLink>
+          ))}
         </nav>
       </StyledContainer>
     </StyledHeader>
-  )
+  );
 }
 
 const StyledContainer = styled.div`
@@ -40,29 +44,27 @@ const StyledContainer = styled.div`
   @media screen and (min-width: 45em) {
     flex-direction: row;
   }
-  nav a {
-    height: 48px;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 8px;
-    padding-right: 8px;
-    color: inherit;
-    font-size: 12px;
-    line-height: 48px;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-
-    @media screen and (min-width: 45em) {
-      height: 60px;
-      line-height: 60px;
-      font-size: 14px;
-      padding-left: 16px;
-      padding-right: 16px;
-    }
+`;
+const StyledAnchorLink = styled(AnchorLink)`
+  height: 48px;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: inherit;
+  font-size: 12px;
+  line-height: 48px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  @media screen and (min-width: 45em) {
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
-`
-
+`;
 const StyledHeader = styled.header`
   position: fixed;
   top: 0;
@@ -77,4 +79,4 @@ const StyledHeader = styled.header`
     min-height: 60px;
     text-align: initial;
   }
-`
+`;

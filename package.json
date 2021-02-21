@@ -14,7 +14,7 @@
     "build": "cross-env NODE_OPTIONS=\"-r esm\" gatsby build",
     "develop": "cross-env NODE_OPTIONS=\"-r esm\" gatsby develop",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve": "cross-env NODE_OPTIONS=\"-r esm\" gatsby serve",
     "clean": "gatsby clean"
   },
   "eslintConfig": {
@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
-    "babel-plugin-styled-components": "^1.11.1",
     "date-fns": "^2.17.0",
     "dotenv": "^8.2.0",
     "gatsby": "^2.24.63",
@@ -48,6 +47,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "babel-plugin-styled-components": "^1.12.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.8.1",
     "eslint-config-airbnb": "^18.2.0",

@@ -1,35 +1,80 @@
 import React from 'react';
+import styled from 'styled-components';
+
+import { MP3Player } from '../components/MP3Player';
+import { ShowsList } from '../components/ShowsList';
+import { Nav } from '../components/Nav';
+import { Footer } from '../components/Footer';
+import { Hero } from '../components/Hero';
+
+// These become the href of links i.e. '#shows' and
+// the id tags for corresponding html sections to smooth-scroll to
+const navIds = ['releases', 'shows', 'contact'];
 
 export default function HomePage() {
   return (
-    <main>
-      <h1>Pat Williams!</h1>
-      <Para />
-      <h1 id="shows">Shows</h1>
-      <Para />
-      <h1 id="releases">Releases</h1>
-      <Para />
-      <form id="contact">
-        <label>
-          Contact me:
-          <input type="text" placeholder="Can't use it, don't care" disabled />
-        </label>
-      </form>
-    </main>
+    <>
+      <Nav navIds={navIds} />
+      <StyledPageWrapper id="main">
+        <Hero />
+        <StyledNarrowDiv>
+          <StyledSection id={navIds[0]}>
+            <StyledH2>Leon River EP</StyledH2>
+            <MP3Player />
+          </StyledSection>
+          <StyledSection id={navIds[1]}>
+            <StyledH2>2021 Shows</StyledH2>
+            <ShowsList />
+          </StyledSection>
+          <StyledSection id={navIds[2]}>
+            <StyledH2>Contact</StyledH2>
+            <StyledP>patrick@patwilliamsmusic.com</StyledP>
+          </StyledSection>
+        </StyledNarrowDiv>
+        <Footer />
+      </StyledPageWrapper>
+    </>
   );
 }
-
-const Para = () => {
-  return (
-    <p>
-      Of your chamber no as said napping i my my straight. Fowl of least not the
-      on wheeled, with will than by sad. Quoth sorrow it this living with.
-      Nights be here ember is. Sent whether a wished fancy bird fancy. Rustling
-      so door within core i remember ebony, for quaff but my god the felt i
-      bird. The of enchanted this his from heaven till terrors quoth. Forget
-      respiterespite still whom swung violet saintly. Sinking whose bust sainted
-      more, not burden wrought or nameless he by or the whom. The on was
-      plutonian the bird the. My door tufted.
-    </p>
-  );
-};
+const StyledP = styled.p`
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 32px;
+`;
+const StyledH2 = styled.h2`
+  font-size: 32px;
+  text-align: center;
+  line-height: 1.125;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 32px;
+  @media screen and (min-width: 26em) {
+    font-size: 48px;
+    margin-bottom: 64px;
+  }
+`;
+const StyledNarrowDiv = styled.div`
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 32px;
+`;
+const StyledSection = styled.section`
+  padding-top: 64px;
+  padding-bottom: 64px;
+  @media screen and (min-width: 45em) {
+    padding-top: calc(3rem + 4vw);
+    padding-bottom: calc(3rem + 4vw);
+  }
+  @media screen and (min-width: 120em) {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+`;
+const StyledPageWrapper = styled.div`
+  //account for fixed navigation bar
+  padding-top: 96px;
+  @media screen and (min-width: 45em) {
+    padding-top: 60px;
+  }
+`;
