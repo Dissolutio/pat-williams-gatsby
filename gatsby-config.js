@@ -1,16 +1,20 @@
-import dotenv from "dotenv"
+import dotenv from 'dotenv';
 
-dotenv.config({ path: ".env" })
+dotenv.config({ path: '.env' });
 
 export default {
   siteMetadata: {
     title: `Pat Williams Music`,
     siteUrl: `https://patwilliamsmusic.netlify.app/`,
     description: `Listen to music by singer/song-writer Patrick Williams. Learn about the artist, his work, his upcoming performances.`,
+    // social: {
+    //   instagram: `https://www.instagram.com/patwilliamstx/`,
+    //   youtube: `https://www.youtube.com/channel/UCYqVNOVGG92krQ6tzDN558Q`,
+    // },
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-styled-components",
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -35,4 +39,4 @@ export default {
     //   },
     // },
   ],
-}
+};
