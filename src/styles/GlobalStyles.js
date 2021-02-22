@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   :root {
     --red: #FF4949;
     --black: #111,
@@ -21,6 +21,6 @@ const GlobalStyles = createGlobalStyle`
     font-size: 2rem;
   }
 
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;

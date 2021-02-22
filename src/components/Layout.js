@@ -1,5 +1,5 @@
 import React from 'react';
-import GlobalStyles from '../styles/GlobalStyles';
+import { GlobalStyles } from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
 import 'normalize.css';
 
