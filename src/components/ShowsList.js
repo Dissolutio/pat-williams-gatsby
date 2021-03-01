@@ -33,7 +33,7 @@ export const ShowsList = () => {
   return (
     <StyledOL>
       {exampleShows.map((show) => (
-        <ShowItem show={show} />
+        <ShowItem key={show.name} show={show} />
       ))}
     </StyledOL>
   );
@@ -46,8 +46,8 @@ const ShowItem = ({ show }) => {
   return (
     <StyledLI>
       <StyledTime datetime={`${date}`}>
-        <span class="month">{`${month}`}</span>
-        <span class="day">{`${day}`}</span>
+        <span className="month">{`${month}`}</span>
+        <span className="day">{`${day}`}</span>
       </StyledTime>
       <StyledSecondPartDiv>
         <StyledMiddleCol>
