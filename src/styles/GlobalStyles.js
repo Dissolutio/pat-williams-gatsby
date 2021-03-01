@@ -16,11 +16,13 @@ export const GlobalStyles = createGlobalStyle`
   }
   html {
     font-size: 10px;
+    @media screen and (min-width: 128em) {
+    font-size: 15px;
+    }
   }
   body {
     font-size: 2rem;
   }
-
 `;
 
 export default GlobalStyles;

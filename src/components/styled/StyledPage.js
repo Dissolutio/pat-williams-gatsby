@@ -6,7 +6,7 @@ export const StyledP = styled.p`
   margin-bottom: 32px;
 `;
 export const StyledH2 = styled.h2`
-  font-size: 32px;
+  font-size: 1.6em;
   text-align: center;
   line-height: 1.125;
   font-weight: 700;
@@ -21,17 +21,17 @@ export const StyledNarrowDiv = styled.div`
   max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
-  padding: 32px;
+  padding: 1em 1.6em;
 `;
 export const StyledSection = styled.section`
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 1em;
+  padding-bottom: 1em;
   @media screen and (min-width: 45em) {
-    padding-top: calc(3rem + 4vw);
-    padding-bottom: calc(3rem + 4vw);
+    padding-top: 1.6em;
+    padding-bottom: 1.6em;
   }
-  @media screen and (min-width: 120em) {
-    padding-top: 64px;
-    padding-bottom: 64px;
+  @media screen and (min-width: 90em) {
+    padding-top: 3.2em;
+    padding-bottom: 3.2em;
   }
 `;

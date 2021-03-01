@@ -23,11 +23,14 @@ export const IconBar = () => {
 };
 
 export const StyledIconDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-left: 16px;
   padding-right: 16px;
   a {
     display: inline-block;
-    padding: 8px;
+    padding: 4px;
     margin-left: 8px;
     margin-right: 8px;
     color: inherit;

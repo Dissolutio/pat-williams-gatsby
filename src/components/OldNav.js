@@ -24,7 +24,9 @@ export function OldNav({ navIds }) {
         )}
         <nav>
           {navIds.map((navId) => (
-            <StyledAnchorLink href={`#${navId}`}>{navId}</StyledAnchorLink>
+            <StyledAnchorLink key={navId} href={`#${navId}`}>
+              {navId}
+            </StyledAnchorLink>
           ))}
         </nav>
       </StyledContainer>
