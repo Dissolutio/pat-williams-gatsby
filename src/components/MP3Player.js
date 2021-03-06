@@ -3,6 +3,13 @@ import { graphql, useStaticQuery } from 'gatsby';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
+// LEON RIVER EP
+// 1. Leon River Blues
+// 2. Sit There and Stare
+// 3. 44 Miles to Independence
+// 4. God Given Talent
+// 5. Imperfect Lens
+
 export const MP3Player = () => {
   const [songIndex, setSongIndex] = React.useState(0);
 
