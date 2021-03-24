@@ -1,18 +1,9 @@
-import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/lib/styles.css';
-
-// LEON RIVER EP
-// 1. Leon River Blues
-// 2. Sit There and Stare
-// 3. 44 Miles to Independence
-// 4. God Given Talent
-// 5. Imperfect Lens
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 
 export const MP3Player = () => {
-  const [songIndex, setSongIndex] = React.useState(0);
-
   const data = useStaticQuery(graphql`
     query {
       allFile(filter: { extension: { eq: "mp3" } }) {
@@ -25,68 +16,49 @@ export const MP3Player = () => {
       }
     }
   `);
-  const songsArr = data.allFile.edges.map(({ node: song }) => {
+  const mp3s = data.allFile.edges.map((edge) => edge.node);
+  // LEON RIVER EP
+  const track1 = {
+    name: "Leon River Blues",
+    mp3Filename: "Leon_River_Blues",
+  };
+  const track2 = {
+    name: "Sit There and Stare",
+    mp3Filename: "Sit_There_and_Stare",
+  };
+  const track3 = {
+    name: "44 Miles to Independence",
+    mp3Filename: "44_Miles_to_Independence",
+  };
+  const track4 = {
+    name: "God Given Talent",
+    mp3Filename: "God_Given_Talent",
+  };
+  const track5 = {
+    name: "Imperfect Lens",
+    mp3Filename: "Imperfect_Lens",
+  };
+  const leonRiverEP = [track1, track2, track3, track4, track5].map((track) => {
+    const trackMP3Node = mp3s.find((mp3) => {
+      return mp3.name === track.mp3Filename;
+    });
+    const src = trackMP3Node?.publicURL ?? "";
     return {
-      name: prettifySongName(song.name),
-      src: song.publicURL,
+      name: track.name,
+      src,
     };
   });
-  const maxIndex = songsArr.length - 1;
-  const handleNextSong = () => {
-    const isNextable = songIndex >= 0 && songIndex < maxIndex;
-    if (isNextable) {
-      setSongIndex((state) => state + 1);
-    } else {
-      setSongIndex(0);
-    }
-  };
-  const handlePrevSong = () => {
-    const isPrevable = songIndex > 0 && songIndex <= maxIndex;
-    if (isPrevable) {
-      setSongIndex((state) => state - 1);
-    } else {
-      setSongIndex(maxIndex);
-    }
-  };
-  const currentSong = songsArr[songIndex];
-  const currentSongSrc = currentSong?.src ?? '';
-  const currentSongName = currentSong?.name ?? '...';
   return (
-    <AudioPlayer
-      src={`${currentSongSrc}`}
-      preload="metadata"
-      autoPlayAfterSrcChange={false}
-      showSkipControls={true}
-      customAdditionalControls={[]}
-      onClickPrevious={handlePrevSong}
-      onClickNext={handleNextSong}
-      header={`${currentSongName}`}
-      footer={`Leon River EP - track ${songIndex + 1}`}
-    />
+    <>
+      {leonRiverEP.map((track) => (
+        <details key={track.name}>
+          <summary>{track.name}</summary>
+          <AudioPlayer
+            src={track.src}
+            // header={`${track?.name}`}
+          />
+        </details>
+      ))}
+    </>
   );
 };
-
-function prettifySongName(str) {
-  return replaceAll(str, '-', ' ').split(' ').map(capitalize).join(' ');
-
-  function replaceAll(string, search, replace) {
-    return string.split(search).join(replace);
-  }
-
-  function capitalize(str, i) {
-    let myStr = str;
-    if (i > 0 && (str === 'to' || str === 'and' || str === 'for')) {
-      return str;
-    }
-    //handle parentheses -- i.e.'wrong-sides-(bygones)' => Wrong Side (Bygones)
-    const isParentheses = str.startsWith('(');
-    if (isParentheses) {
-      myStr = str.slice(1);
-    }
-    return (
-      (isParentheses ? '(' : '') +
-      myStr.charAt(0).toUpperCase() +
-      myStr.slice(1)
-    );
-  }
-}

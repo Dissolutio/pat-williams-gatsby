@@ -1,21 +1,20 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
 
-import { MP3Player } from '../components/MP3Player';
-import { ShowsList } from '../components/ShowsList';
-import { Footer } from '../components/Footer';
-import { StyledBGHero } from '../components/StyledBGHero';
+import { MP3Player } from "../components/MP3Player";
+import { ShowsList } from "../components/ShowsList";
+import { Footer } from "../components/Footer";
+import { StyledBGHero } from "../components/StyledBGHero";
 import {
   StyledNarrowDiv,
   StyledSection,
   StyledH2,
   StyledP,
-} from '../components/styled/StyledPage';
-import { IconBar } from '../components/IconBar';
+} from "../components/styled/StyledPage";
+import { IconBar } from "../components/IconBar";
 
 // These become the href of links i.e. '#shows' and
 // the id tags for corresponding html sections to smooth-scroll to
-const navIds = ['releases', 'shows', 'contact'];
+const navIds = ["releases", "shows", "contact"];
 
 export default function HomePage() {
   return (
@@ -25,10 +24,11 @@ export default function HomePage() {
         <IconBar />
         <StyledSection id={navIds[0]}>
           <StyledH2>Leon River EP</StyledH2>
+          <p>Check out these 5 songs:</p>
           <MP3Player />
         </StyledSection>
         <StyledSection id={navIds[1]}>
-          <StyledH2>2021 Shows</StyledH2>
+          <StyledH2>2021 Events</StyledH2>
           <ShowsList />
         </StyledSection>
         <StyledSection id={navIds[2]}>

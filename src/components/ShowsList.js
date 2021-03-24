@@ -1,31 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import { format } from 'date-fns';
+import React from "react";
+import styled from "styled-components";
+import { format } from "date-fns";
 
 const exampleShows = [
   {
-    name: 'Mask Party',
-    date: '2021-03-28',
-    location: 'Austin, TX',
-    mapURL:
-      'https://www.google.com/maps/place/Wake+the+Dead+Coffee+House/@29.8916286,-97.9588907,17z/data=!3m1!4b1!4m5!3m4!1s0x865ca79164f77f7d:0xef67ec4e5463c456!8m2!3d29.891624!4d-97.956702',
-    infoURL: 'https://www.wakethedeadcoffeehouse.net/happenings.html',
-  },
-  {
-    name: 'Summer Bash',
-    date: '2021-06-07',
-    location: 'Austin, TX',
-    mapURL:
-      'https://www.google.com/maps/place/Wake+the+Dead+Coffee+House/@29.8916286,-97.9588907,17z/data=!3m1!4b1!4m5!3m4!1s0x865ca79164f77f7d:0xef67ec4e5463c456!8m2!3d29.891624!4d-97.956702',
-    infoURL: 'https://www.wakethedeadcoffeehouse.net/happenings.html',
-  },
-  {
-    name: 'Oktoberfest',
-    date: '2021-10-27',
-    location: 'Austin, TX',
-    mapURL:
-      'https://www.google.com/maps/place/Wake+the+Dead+Coffee+House/@29.8916286,-97.9588907,17z/data=!3m1!4b1!4m5!3m4!1s0x865ca79164f77f7d:0xef67ec4e5463c456!8m2!3d29.891624!4d-97.956702',
-    infoURL: 'https://www.wakethedeadcoffeehouse.net/happenings.html',
+    name: "4th of July!",
+    date: "2021-07-05",
+    location: "To be decided1, TX",
+    // mapURL: "#",
+    // infoURL: "#",
   },
 ];
 
@@ -41,8 +24,8 @@ export const ShowsList = () => {
 const ShowItem = ({ show }) => {
   const { name, date, location, mapURL, infoURL } = show;
   const showDate = new Date(date);
-  const month = format(showDate, 'MMM');
-  const day = format(showDate, 'd');
+  const month = format(showDate, "MMM");
+  const day = format(showDate, "d");
   return (
     <StyledLI>
       <StyledTime datetime={`${date}`}>
