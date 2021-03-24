@@ -69,3 +69,4 @@ yarn-error.log
 .yarn-integrity
 
 pat-williams-gatsby.code-workspace
+.vscode/
